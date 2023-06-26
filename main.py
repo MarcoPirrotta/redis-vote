@@ -88,10 +88,22 @@ def vota_proposta(user):
 
 
 def vedi_proposte(user):
-    """
-    Permette all'utente di vedere le proposte.
-    L'utente può vedere le proposte ordinate per numero di voti (lunghezza del set).    
-    """
+    testo = r.keys("*")  # Recupera tutte le chiavi (testo delle proposte) presenti nel database
+
+    if not testo:
+        print("Nessuna proposta disponibile.")
+        return
+
+    print("Elenco delle proposte:")
+
+    for titolo in testo:
+        testo = r.smembers(titolo)  # Recupera l'insieme di email delle persone che hanno votato la proposta
+
+        print(f"Titolo: {titolo.decode()}")
+        print(f"Descrizione: {testo.decode()}")
+        print(f"Voti: {len(testo)}")
+        print("---------------------------------------")
+
     return
 
 
