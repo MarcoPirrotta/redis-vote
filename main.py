@@ -101,7 +101,7 @@ def vedi_proposte(user):
 
         print(f"Titolo: {titolo.decode()}")
         print(f"Descrizione: {testo.decode()}")
-        print(f"Voti: {len(testo)}")
+        print(f"Voti: {r.scard(testo)}")
         print("---------------------------------------")
 
     return
